@@ -1,0 +1,302 @@
+
+html {
+    @include box-sizing(border-box);
+    height: 100vh;
+}
+*,
+*:after,
+*:before {
+  @include box-sizing(inherit);
+}
+body {
+    font-family: $fuente_principal;
+    height: 100vh;
+    background-color: rgb(151, 153, 155);
+}
+img {
+    max-width: 100%;
+}
+.centrado {
+    text-align:center;
+}
+.oculto {
+    display: none;
+}
+
+.no-menu.pagina
+{
+    .sidebar
+    {
+        margin-left:-20rem ;
+    }
+}
+
+.pagina
+{
+    
+    display: flex;
+    flex-direction: column;
+}
+
+
+.header
+{
+    display: flex;
+    
+}
+
+.nombre-sitio
+{
+    flex:0 0 5rem;
+    padding: 1rem;
+    @include desktop
+    {
+        flex: 0 0 20rem;  
+    }
+    background-color: $secundario;
+    h1
+    {
+        color: $blanco;
+        margin: 0;
+    }
+    .escritorio
+    {
+        display: none;
+        @include desktop
+        {
+            display: block;
+        }
+        
+    }
+    .movil
+    {
+        @include desktop
+        
+        {
+            display: none;
+        }
+        
+    }   
+    
+} 
+.barra
+{
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    background-color: $primario;
+    .menu-izquierdo
+    {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        i
+        {
+            color: white;
+            font-size: 1.4rem;
+            
+            .fa-arrow-right
+            {
+                display: none;
+            }
+            
+            
+        }
+        
+    }
+    .menu-derecho
+    {
+        display: flex;
+        .caja
+        {
+            padding: 0  1rem;
+            display: flex;
+            align-items: center;
+        }
+        &:hover
+        {
+            background-color:darken($primario, 5);
+        }
+        a
+        {
+            color: $blanco;
+            text-decoration: none;
+            
+            span
+            {
+                background-color: $terciario;
+                border-radius: 50%;
+                padding: 0.5rem;
+                margin-left: .5rem;
+            }
+        }
+        
+    }
+    
+}
+
+.sidebar
+{
+    transition: margin-left .3s ease;
+    background-color:$grisOscuro ;
+    flex:0 0 20rem ;
+    padding: 1rem;
+    color: $blanco;
+    
+    .usuario
+    {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-weight: bold;
+        
+        span
+        {
+            font-weight: normal;
+            display: block;
+        }
+        
+        img
+        {
+            max-width: 5rem;
+        }
+    }
+    
+    .buscador
+    {
+        margin-top:1rem ;
+        input[type="text"]
+        {
+            width: 100%;
+            height: 3rem;
+            border: none;
+            border-radius: 5px;
+            padding-left: 1rem;
+        }
+        
+    }
+}
+
+
+
+.menu-admin
+{
+    margin-top: 2rem;
+}
+
+
+.menu-admin
+{
+    
+    .menu
+    {
+        list-style: none;
+        padding: 0 0 0 1rem;
+        
+        >li {
+            padding: 0.5rem;
+            &:hover
+            {
+                ul 
+                {
+                    display: block;
+                }
+            }
+            a 
+            {
+                color: $blanco;
+                text-decoration: none; 
+                padding: 0.5rem;
+                transition: padding-left .3s ease;
+                &:hover
+                {
+                    background-color: $primario;
+                    padding-left: 2rem;
+                }
+            }
+            ul
+            {
+                display: none;
+                margin-top: 1rem;
+                list-style: none;
+                background-color: darken($grisOscuro,3);
+                padding: 1rem;
+                li
+                {
+                    margin-bottom: 1rem;
+                    &:last-of-type
+                    {
+                        margin-bottom: 0;
+                    }
+                }
+                
+            }
+        }
+        
+        
+        
+    }
+    
+    
+    
+}
+.contenedor-principal
+{
+    flex:1;
+    display: flex;
+}
+
+.contenido
+{
+    flex: 1;
+    padding: 2rem;
+}
+
+.formulario {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .campo {
+        margin-bottom: 1rem;
+        flex: 0 0 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        @include tablet{
+            flex: 0 0 calc(50% - 1rem);
+        }
+
+        &.expandir {
+            flex:0 0 calc(100% - 1rem);
+            label {
+                flex: 0 0 calc(12.5%);
+            }
+            textarea {
+                flex:1;
+            }
+        }
+        label {
+            flex:  0 0 25%;
+        }
+        input[type="text"] {
+            flex: 1 0 75%
+        }
+        .opciones {
+            display: flex;
+            flex-wrap: wrap;
+            flex:1;
+
+            label {
+                padding-left: 1rem;
+            }
+        }
+        &.enviar {
+            display: flex;
+            justify-content: flex-end;
+            .boton {
+                @include boton($primario);
+            }
+        }
+    }
+}
